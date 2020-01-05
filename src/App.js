@@ -4,6 +4,8 @@ import './App.css';
 
 import Homepage from './pages/homepage.component';
 
+import ShopPage from './pages/shop/shop.component';
+
 const hatspage = () => (
   <div>
     <h1>
@@ -17,7 +19,7 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path='/' component={Homepage} />
-        <Route path='/hats' component={hatspage} />
+        <Route path='/shop' component={ShopPage} />
       </Switch>
     </div>
   );
