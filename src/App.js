@@ -8,10 +8,12 @@ import ShopPage from './pages/shop/shop.component.jsx';
 
 import Header from './components/header-component/header-component.jsx';
 
+import SignInAndSignUpPage from './pages/sign-in/sign-in.component.jsx';
 function App() {
   return (
     <div className="App">
       <Header />
+      <SignInAndSignUpPage/>
       <Switch>
         <Route exact path='/' component={Homepage} />
         <Route path='/shop' component={ShopPage} />
