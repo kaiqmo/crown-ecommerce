@@ -4,15 +4,8 @@ import './App.css';
 
 import Homepage from './pages/homepage.component';
 
-import ShopPage from './pages/shop/shop.component';
+import ShopPage from './pages/shop/shop.component.jsx';
 
-const hatspage = () => (
-  <div>
-    <h1>
-      Hats PAGE
-    </h1>
-  </div>
-)
 
 function App() {
   return (
