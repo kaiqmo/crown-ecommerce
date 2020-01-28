@@ -9,7 +9,7 @@ import ShopPage from './pages/shop/shop.component.jsx';
 import Header from './components/header-component/header-component.jsx';
 
 import SignInAndSignUpPage from './pages/sign-in/sign-in.component.jsx';
-import {auth} from './firebase/firebase.utils';
+import {auth, CreateUserProfileDocument} from './firebase/firebase.utils';
 
 class App extends React.Component {
   constructor(){
@@ -23,8 +23,22 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount(){
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user=> {
-      this.setState({currentUser: user});
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth=> {
+      if(userAuth){
+        const userRef = await CreateUserProfileDocument(userAuth);
+        
+        userRef.onSnapshot( snapShot =>{
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data()
+            }
+          }, ()=>{
+            // unico jeito de vizualizar dps de um setstate eh no callback console.log(this.state);
+          });
+        });
+      }
+      this.setState({ currentUser:userAuth});
     });
   }
   
