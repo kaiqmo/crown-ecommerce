@@ -1,5 +1,6 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
+import {connect} from 'react-redux';
 import './App.css';
 
 import Homepage from './pages/homepage.component';
@@ -8,38 +9,33 @@ import ShopPage from './pages/shop/shop.component.jsx';
 
 import Header from './components/header-component/header-component.jsx';
 
+import {setCurrentUser} from './redux/user/user.actions';
+
 import SignInAndSignUpPage from './pages/sign-in/sign-in.component.jsx';
 import {auth, CreateUserProfileDocument} from './firebase/firebase.utils';
 
 class App extends React.Component {
-  constructor(){
-    super();
-    
-    this.state = {
-      currentUser:null
-    }
-  }
 
+  
   unsubscribeFromAuth = null;
 
   componentDidMount(){
+
+    const {setCurrentUser} = this.props;
+
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth=> {
       if(userAuth){
         const userRef = await CreateUserProfileDocument(userAuth);
         
         userRef.onSnapshot( snapShot =>{
-          this.setState({
-            currentUser: {
-              id: snapShot.id,
-              ...snapShot.data()
-            }
-          }, ()=>{
-            // unico jeito de vizualizar dps de um setstate eh no callback console.log(this.state);
+          setCurrentUser({
+            id:snapShot.id,
+            ...snapShot.data()
           });
         });
       }
-      this.setState({ currentUser:userAuth});
-    });
+        setCurrentUser(userAuth);
+      });
   }
   
   componentWillUnmount(){
@@ -48,7 +44,7 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
-        <Header currentUser={this.state.currentUser} />
+        <Header />
         
         <Switch>
           <Route exact path='/' component={Homepage} />
@@ -60,4 +56,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch =>({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+}); 
+
+export default connect(null,mapDispatchToProps)(App);

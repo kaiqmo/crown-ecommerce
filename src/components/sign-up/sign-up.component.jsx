@@ -34,6 +34,8 @@ class SignUp extends React.Component{
                 confirmPassword:''
              });
         }catch(error){
+            if(error.code === "auth/email-already-in-use")
+                alert("Email already registered!");
             console.error(error);
         }
     }

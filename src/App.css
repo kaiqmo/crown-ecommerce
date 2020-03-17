@@ -10,3 +10,10 @@ a{
 *{
     box-sizing: border-box;
 }
+
+@media(max-width:600px){
+    body{
+        font-family: 'Open Sans Condensed';
+        font-size: 12px;
+    }
+}
