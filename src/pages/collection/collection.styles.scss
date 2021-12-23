@@ -1,7 +1,18 @@
 .collection-page {
     display: flex;
     flex-direction: column;
-  
+    @media(max-width:900px){
+      .items{
+        grid-template-columns: 1fr 1fr 1fr !important;
+        grid-gap:15px;
+      }
+    }
+    @media(max-width:600px){
+      .items{
+          grid-template-columns: 1fr 1fr !important;
+          grid-gap: 5px !important;
+      }
+    }
     .title {
       font-size: 38px;
       margin: 0 auto 30px;

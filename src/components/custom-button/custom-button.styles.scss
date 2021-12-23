@@ -15,6 +15,7 @@
     cursor: pointer;
     display: flex;
     justify-content: center;
+    border-radius: 5px;
 
     &:hover {
       background-color: white;
@@ -44,6 +45,17 @@
       }
     }
     
+    @media(max-width:500px){
+      &.google-sign-in{
+        min-width:125px;
+      }
+    }
+    @media(max-width:400px){
+      width: 125px !important;
+      min-width: 100px;
+      padding:0;
+      letter-spacing: 2.5px;
+    }
   }
 
   

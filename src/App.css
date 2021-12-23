@@ -10,7 +10,11 @@ a{
 *{
     box-sizing: border-box;
 }
-
+@media(max-width:900px){
+    body{
+        padding:20px 20px;
+    }
+}
 @media(max-width:600px){
     body{
         font-family: 'Open Sans Condensed';

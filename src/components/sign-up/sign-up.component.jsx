@@ -1,4 +1,7 @@
 import React from 'react';
+
+import './sign-up.styles.scss';
+
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
@@ -85,7 +88,9 @@ class SignUp extends React.Component{
                     label='Confirm Password'
                     required
                     />
-                    <CustomButton type='submit'>SIGN UP</CustomButton>
+                    <div className='buttons'>
+                        <CustomButton type='submit'>SIGN UP</CustomButton>
+                    </div>
                 </form>
             </div>
         )

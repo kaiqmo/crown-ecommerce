@@ -1,8 +1,10 @@
 .sign-in{
-    width: 380px;
+    width:100%;
     display: flex;
     flex-direction: column;
     margin: 10px;
+    opacity: 1;    
+    transition: visibility 0s, opacity 0.5s linear;
 
     .title{
         margin:10px 0;
@@ -10,6 +12,24 @@
     
     .buttons{
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
     }
+    
+    @media(max-width:999px){
+        .buttons{
+            width:100%;
+            button{
+                width:237px;
+            }
+        }
+    }
+    @media(max-width:600px){
+        .buttons{
+            flex-direction: column;
+            align-items: center;
+            :first-child{
+                margin: 10px 0;
+            }
+        }
+    }   
 }

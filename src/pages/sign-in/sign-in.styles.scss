@@ -1,6 +1,91 @@
 .sign-in-and-sign-up{
-    width:850px;
+    width:100%;
     display: flex;
     justify-content: space-between;
     margin: 30px auto;
+    flex-direction: column;
+    opacity: 1;    
+    transition: visibility 0s, opacity 0.5s linear;
+
+    @media(max-width:999px){
+        margin:0;
+        .sign-in{
+            margin-left:0;
+        }
+        .toggle-switch{
+            margin-left:5px;
+        }
+    }
+    .toggle-switch {
+        position: relative;
+        width: 250px;
+        height: 50px;
+        display: inline-block;
+        text-align: center;
+        align-self: center;
+        justify-content: center;
+        top: 50px;
+    }
+    .checkbox {
+        display: none;
+    }
+    .label {
+        display: block;
+        width:237px;
+        height:50px;
+        overflow: hidden;
+        cursor: pointer;
+        border: 0 solid #bbb;
+        border-radius: 5px;
+        justify-content: center;
+        text-align: center;
+        margin-left:5px;
+    }
+    .inner {
+        display: block;
+        width: 200%;
+        margin-left: -100%;
+        transition: margin 0.3s ease-in 0s;
+    }
+    .inner:before,
+    .inner:after {
+        float: left;
+        width: 237px;
+        height: 50px;
+        padding: 0;
+        line-height: 50px;
+        font-size: 20px;
+        color: #fff;
+        font-weight: bold;
+        box-sizing: border-box;
+        .sign-in{
+            display: none !important;
+            transition: opacity 1s ease-out;
+            opacity: 0;
+        }
+        .sign-up{
+            opacity: 1;
+            transition: visibility 0s, opacity 0.5s linear;
+        }
+    }
+    .inner:before {
+        content: "Iniciar Sessão";
+        padding-right: 10px;
+        background-color: #000000;
+        color: #fff;
+        text-align: center;
+    }
+    .inner:after {
+        content: "Criar Conta";
+        padding-right: 10px;
+        background-color: #000000;
+        color: #fff;
+        text-align: center;
+        .sign-up{
+            display: none !important;
+        }
+    }
+    .checkbox:checked + .label .inner {
+        margin-left: 0;
+    }
 }

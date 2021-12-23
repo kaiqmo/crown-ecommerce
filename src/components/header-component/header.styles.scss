@@ -25,10 +25,17 @@
     }
   }
   
-@media(max-width:600){
+@media(max-width:999px){
   .header{
-    margin-bottom: 12px;
-    height: 40px;
-    
+    width:100%;
+    margin-bottom: 5px;
+    .logo-container{
+      padding: 15px ;
+    }
+    .options{
+      width:100%;
+      justify-content: flex-end;
+      margin-right:10%;
+    }
   }
 }

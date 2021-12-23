@@ -13,7 +13,11 @@
     justify-content: space-between;
   }
 }
-
+@media(max-width:900px){
+  .collection-preview .preview{
+      display: flex;   
+  }
+}
 @media(max-width:600px){
   .collection-preview {
     display: flex;
