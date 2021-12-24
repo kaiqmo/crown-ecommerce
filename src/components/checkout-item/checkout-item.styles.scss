@@ -1,7 +1,9 @@
 .checkout-item {
   width: 100%;
   display: flex;
-  min-height: 100px;
+  height:100%;
+  max-height:350px;
+  min-height: 80px;
   border-bottom: 1px solid darkgrey;
   padding: 15px 0;
   font-size: 20px;
@@ -12,8 +14,8 @@
     padding-right: 15px;
 
     img {
-      width: 100%;
-      height: 100%;
+      width: 50%;
+      height: 50%;
     }
   }
   .name,
@@ -38,5 +40,18 @@
   .remove-button {
     padding-left: 12px;
     cursor: pointer;
+  }
+  @media(max-width:600px){
+    .remove-button{
+      display: flex;
+      width: 15%;
+      justify-content: flex-end;
+    }
+    .price{
+      width:15%;
+    }
+    .name{
+      width:20%;
+    }
   }
 }

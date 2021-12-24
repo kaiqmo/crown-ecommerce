@@ -33,8 +33,8 @@ export default class SignIn extends React.Component{
     render(){
         return (
             <div className='sign-in'>
-                <h2>I already have an account</h2>
-                <span>Sign in with your email and password</span>
+                <h2>Já tenho conta</h2>
+                <span>Entre com email e senha</span>
                 <form onSubmit={this.handleSubmit}>
                     <FormInput 
                         name='email' type='email' 
@@ -44,12 +44,12 @@ export default class SignIn extends React.Component{
                     
                     <FormInput
                         name='password' type='password'
-                        label='Password'
+                        label='Senha'
                         handleChange={this.handleChange}  
                         value={this.state.password} required />
                     <div className='buttons'>
-                        <CustomButton type='submit' >Sign In</CustomButton>
-                        <CustomButton onClick={signInWithGoogle} isGoogleSignIn >Sign In  With Google</CustomButton>
+                        <CustomButton type='submit' >Entrar</CustomButton>
+                        <CustomButton onClick={signInWithGoogle} isGoogleSignIn >Entrar com Google</CustomButton>
                     </div>
                 </form>
             </div>

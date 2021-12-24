@@ -1,1 +1,0 @@
-heroku create crwn-live --buildpack https://github.com/mars/create-react-app-buildpack.git
