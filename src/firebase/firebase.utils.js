@@ -17,8 +17,17 @@ const config  = {
       if(!userAuth) return; // if the user doesnt exist
       
         const userRef = firestore.doc(`users/${userAuth.uid}`);
+        //console.log(userRef);
 
         const snapShot = await userRef.get();
+        //console.log(snapShot);
+
+        const userCollection = firestore.collection('users');
+        //console.log(userCollection); // show collection users
+
+        const snapShotCollection = await userCollection.get();
+        //console.log({ collection : snapShotCollection.docs.map(doc =>doc.data())}); // show the json of users
+
         if(!snapShot.exists){
           const { displayName, email} = userAuth;
           const createdAt = new Date();
@@ -38,6 +47,37 @@ const config  = {
         //console.log(snapShot);
         return userRef;
   };
+
+  export const addCollectionAndDocuments = async (collectionKey,ObjectsToAdd) => {
+    const collectionRef = firestore.collection(collectionKey);
+    console.log(collectionRef);
+
+    const batch = firestore.batch();
+
+    ObjectsToAdd.forEach(obj =>{
+      const newDocRef = collectionRef.doc();
+      batch.set(newDocRef,obj);
+    })
+
+    return await batch.commit();
+
+  }
+
+  export const convertCollectionsSnapshotToMap = (collections) =>{
+    const transformedCollections = collections.docs.map(doc =>{
+      const {title, items} = doc.data();
+      return {
+        routeName: encodeURI(title.toLowerCase()),
+        id:doc.id,
+        title,
+        items
+      }
+    });
+    return transformedCollections.reduce((accumulator,collection)=>{
+      accumulator[collection.title.toLowerCase()] = collection;
+      return accumulator;
+    },{});
+  }
 
   firebase.initializeApp(config);
 

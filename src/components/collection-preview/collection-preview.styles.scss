@@ -6,24 +6,31 @@
   .title {
     font-size: 28px;
     margin-bottom: 25px;
+    padding:5px;
     cursor: pointer;
+  }:hover{
+    border-radius: 15px;
   }
 
   .preview {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    margin-bottom: 20px;    
   }
 }
 @media(max-width:900px){
   .collection-preview .preview{
-      display: flex;   
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 @media(max-width:600px){
   .collection-preview {
     display: flex;
     margin-bottom: 10px;
-  
+    .preview{
+      grid-template-columns: 1fr 1fr;
+    }
     .title {
       font-size: 14px;
       margin-bottom: 10px;
